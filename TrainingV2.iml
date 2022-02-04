@@ -59,5 +59,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="Maven: io.netty:netty-all:4.0.39.Final" level="project" />
   </component>
 </module>

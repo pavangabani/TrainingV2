@@ -16,7 +16,6 @@ public class client {
         EventLoopGroup group = new NioEventLoopGroup();
         try{
             Bootstrap clientBootstrap = new Bootstrap();
-
             clientBootstrap.group(group);
             clientBootstrap.channel(NioSocketChannel.class);
             clientBootstrap.remoteAddress(new InetSocketAddress("localhost", 9999));
@@ -25,7 +24,6 @@ public class client {
                     socketChannel.pipeline().addLast(new ClientHandler() {
                         @Override
                         protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
-
                         }
                     });
                 }
