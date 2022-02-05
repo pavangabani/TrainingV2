@@ -14,7 +14,6 @@ public class Member {
     Group group;
     String consumerName;
     NSQConsumer consumer;
-    AtomicInteger counter = new AtomicInteger(0);
     ObjectMapper mapper = new ObjectMapper();
     NSQLookup lookup= new DefaultNSQLookup(mapper);
 
@@ -28,7 +27,6 @@ public class Member {
         consumer = new NSQConsumer(lookup, group.groupName, consumerName, (message) -> {
             String m=new String(message.getMessage());
             System.out.println(consumerName+"'s Messages: "+m);
-            counter.incrementAndGet();
             message.finished();
         });
         consumer.start();
