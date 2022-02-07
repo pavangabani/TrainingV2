@@ -14,15 +14,17 @@ public class WriteThread implements Runnable{
     @Override
     public void run() {
         new Thread(()->{
-            while (true){
-                for(String key:socketStringHashMap.keySet()){
+            for(String key:socketStringHashMap.keySet()){
+                new Thread(()->{
                     BlockingQueue clientQueue= dataManager.getByName(key);
                     try {
-                        System.out.println(clientQueue.take());
+                        while (true){
+                            System.out.println(clientQueue.take());
+                        }
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                }
+                }).start();
             }
         }).start();
     }

@@ -37,7 +37,7 @@ public class Server{
     void read() throws InterruptedException {
         new Thread(new ReadThread(socketStringHashMap,dataManager)).start();
         Thread.sleep(2000);
-        //new Thread(new WriteThread(socketStringHashMap,dataManager)).start();
+        new Thread(new WriteThread(socketStringHashMap,dataManager)).start();
     }
     void display(){
         System.out.println("Everyone's Message Queue");

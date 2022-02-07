@@ -9,7 +9,7 @@ public class Client1 {
         try {
             Socket socket=new Socket("localhost",8888);
 
-        //    DataInputStream dataInputStream=new DataInputStream(socket.getInputStream());
+        //  DataInputStream dataInputStream=new DataInputStream(socket.getInputStream());
             DataOutputStream dataOutputStream=new DataOutputStream(socket.getOutputStream());
 
             dataOutputStream.writeUTF("hi");

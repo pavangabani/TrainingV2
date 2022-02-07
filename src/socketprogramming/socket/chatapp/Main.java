@@ -24,6 +24,5 @@ public class Main {
         shekhar.message("pavan","hi pavan ");
 
         server.read();
-        server.display();
     }
 }

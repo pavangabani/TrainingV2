@@ -1,4 +1,4 @@
-package socketprogramming.socket.sslsocket;
+package socketprogramming.socket.sslsocket.v1;
 
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
