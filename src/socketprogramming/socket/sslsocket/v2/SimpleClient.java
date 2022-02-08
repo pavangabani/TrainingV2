@@ -11,28 +11,24 @@ import java.net.UnknownHostException;
 import java.security.*;
 
 public class SimpleClient {
-    static String startClient(String host, int port) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
-
+    public static void main(String[] args) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+        String host = "localhost";
+        int port = 8443;
         SocketFactory factory = SSLSocketFactory.getDefault();
         try (Socket connection = factory.createSocket(host, port)) {
             ((SSLSocket) connection).setEnabledCipherSuites(
-                    new String[] { "TLS_DHE_RSA_WITH_AES_256_GCM_SHA384"});
+                    new String[] { "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256" });
             ((SSLSocket) connection).setEnabledProtocols(
-                    new String[] { "TLSv1.2"});
+                    new String[] { "TLSv1.2" });
+
             SSLParameters sslParams = new SSLParameters();
             sslParams.setEndpointIdentificationAlgorithm("HTTPS");
             ((SSLSocket) connection).setSSLParameters(sslParams);
-            BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            return input.readLine();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+
+            BufferedReader input = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream()));
+            System.out.println( input.readLine());
         }
-        return null;
-    }
-    public static void main(String[] args) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
-        System.out.println(startClient("localhost", 8443));
     }
 }
 
