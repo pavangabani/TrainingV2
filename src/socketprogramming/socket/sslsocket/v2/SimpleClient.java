@@ -12,6 +12,10 @@ import java.security.*;
 
 public class SimpleClient {
     public static void main(String[] args) throws IOException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+        System.setProperty("javax.net.ssl.keyStore", "/home/pavan/IdeaProjects/TrainingV2/src/socketprogramming/socket/sslsocket/v2/clientkeystore.jks");
+        System.setProperty("javax.net.ssl.keyStorePassword", "password");
+        System.setProperty("javax.net.ssl.trustStore", "/home/pavan/IdeaProjects/TrainingV2/src/socketprogramming/socket/sslsocket/v2/clienttruststore.jks");
+        System.setProperty("javax.net.ssl.trustStorePassword", "password");
         String host = "localhost";
         int port = 8443;
         SocketFactory factory = SSLSocketFactory.getDefault();

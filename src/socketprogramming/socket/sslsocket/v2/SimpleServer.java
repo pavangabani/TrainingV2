@@ -10,8 +10,11 @@ import java.security.*;
 import java.security.cert.CertificateException;
 
 public class SimpleServer {
-
     public static void main(String[] args) throws IOException, UnrecoverableKeyException, CertificateException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
+        System.setProperty("javax.net.ssl.keyStore", "/home/pavan/IdeaProjects/TrainingV2/src/socketprogramming/socket/sslsocket/v2/serverkeystore.jks");
+        System.setProperty("javax.net.ssl.keyStorePassword", "password");
+        System.setProperty("javax.net.ssl.trustStore", "/home/pavan/IdeaProjects/TrainingV2/src/socketprogramming/socket/sslsocket/v2/servertruststore.jks");
+        System.setProperty("javax.net.ssl.trustStorePassword", "password");
         int port = 8443;
         ServerSocketFactory factory = SSLServerSocketFactory.getDefault();
         try (ServerSocket listener = factory.createServerSocket(port)) {
